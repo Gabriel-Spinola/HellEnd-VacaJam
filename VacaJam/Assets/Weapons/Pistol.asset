@@ -15,8 +15,5 @@ MonoBehaviour:
   BulletPrefab: {fileID: 8082318825415896153, guid: 129f8e8bc7d6faf44a98e8002109d928,
     type: 3}
   Ammo: 10
-  Damage: 10
+  Damage: 20
   FireRate: 2
-  Recoil:
-    _enabled: 1
-    _value: 3
