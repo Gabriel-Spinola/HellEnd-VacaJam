@@ -39,7 +39,5 @@ public class InputManager : MonoBehaviour
 
         _keyJump = InputAction.Player.Jump.triggered;
         _keyShoot = InputAction.Player.Shoot.triggered;
-
-        Debug.Log(KeyShoot);
     }
 }

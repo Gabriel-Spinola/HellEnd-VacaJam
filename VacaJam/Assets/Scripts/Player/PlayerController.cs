@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utils;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CollisionDetection))]
@@ -77,6 +77,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         _weapon.UseWeapon(_input.KeyShoot, new OptionalNonSerializable<GameObject>(this.gameObject));
         _weapon.LookAngle = lookAngle;
         _weapon.transform.position = transform.position + LookDir.AngleAxisToVector3(lookAngle, _maxWeaponRotationDistance);
+
+        if (transform.position.y < -14)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void FixedUpdate()
@@ -156,6 +159,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 #endif
 
-        // Die
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
