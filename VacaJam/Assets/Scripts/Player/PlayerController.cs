@@ -13,14 +13,21 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private float _health;
 
     [Header("Movement")]
+    [SerializeField] private float _jumpForce;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _friction;
+
+    [Header("Jump")]
+    [SerializeField] private float _fallMultiplier;
+    [SerializeField] private float _lowJumpMultiplier;
 
     [Header("Debug")]
     [SerializeField] private bool _shouldDie;
 
     private Rigidbody2D _rigidbody;
     private CollisionDetection _collision;
+
+    private bool _isJumpDisabled;
 
     private void Awake()
     {
@@ -30,7 +37,11 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        
+        BetterJump();
+
+        if (_input.KeyJump && _collision.IsGrounded) {
+            Jump();
+        }
     }
 
     private void FixedUpdate()
@@ -45,6 +56,40 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         else {
             _rigidbody.velocity = new Vector2(Mathf.Lerp(_rigidbody.velocity.x, 0f, _friction * Time.fixedDeltaTime), _rigidbody.velocity.y);
+        }
+    }
+
+    private void Jump()
+    {
+        if (_isJumpDisabled)
+            return;
+
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
+
+        StartCoroutine(DisableJump());
+    }
+
+    private IEnumerator DisableJump()
+    {
+        _isJumpDisabled = true;
+
+        yield return new WaitForSeconds(.3f);
+
+        _isJumpDisabled = false;
+    }
+
+    /// <summary>
+    /// if falling, add fallMultiplier
+    /// if jumping and not holding spacebar or walljumping, increase gravity to peform a small jump
+    /// if jumping and holding spacebar, perform a full jump
+    /// </summary>
+    private void BetterJump()
+    {
+        if (_rigidbody.velocity.y < 0) {
+            _rigidbody.velocity += (_fallMultiplier - 1) * Physics.gravity.y * Time.deltaTime * Vector2.up;
+        }
+        else if (_rigidbody.velocity.y > 0 && !_input.KeyJumpHold) {
+            _rigidbody.velocity += (_lowJumpMultiplier - 1) * Physics.gravity.y * Time.deltaTime * Vector2.up;
         }
     }
 

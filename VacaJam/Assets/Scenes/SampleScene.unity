@@ -1299,7 +1299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a5dc09ccb49734faaffbe0e467337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementVec: {x: 0, y: 0}
+  _movementVec: {x: 0, y: 0}
+  _keyJump: 0
+  _keyJumpHold: 0
 --- !u!1 &1164430010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,10 +1628,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -1674,8 +1676,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 946327277}
+  _health: 50
+  _jumpForce: 12
   _moveSpeed: 10
   _friction: 5
+  _fallMultiplier: 4
+  _lowJumpMultiplier: 5
+  _shouldDie: 0
 --- !u!114 &1909880213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,8 +1701,8 @@ MonoBehaviour:
   _rightColOffset: {x: 0, y: 0}
   _leftColOffset: {x: 0, y: 0}
   _horizontalColRadius: 0.5
-  _bottomColSize: {x: 0, y: 0}
-  _bottomColOffset: {x: 0, y: 0}
+  _bottomColSize: {x: 0.97, y: -0.27}
+  _bottomColOffset: {x: 0, y: -0.5}
   IsOnRightWall: 0
   IsOnLeftWall: 0
   IsOnWall: 0

@@ -19,7 +19,15 @@
                     "id": "0343bd85-9d81-4c8f-9501-0ca6862e766a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
+                },
+                {
+                    "name": "JumpHold",
+                    "type": "Button",
+                    "id": "025802c6-1424-467f-9b15-634c91e3aac7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
                 }
             ],
             "bindings": [
@@ -88,6 +96,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "bd0fe9ac-02fa-4904-bfb2-e74a3e6bf312",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse/Keyboard",
+                    "action": "JumpHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
