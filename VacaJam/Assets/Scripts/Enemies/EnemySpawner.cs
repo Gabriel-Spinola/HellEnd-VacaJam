@@ -18,7 +18,8 @@ public class EnemySpawner : MonoBehaviour
     private enum Mode
     {
         KeepSpawning,
-        WaitEnemiesDeath
+        WaitEnemiesDeath,
+        WaitEnemiesDeathToInfinity
     }
 
 
@@ -49,12 +50,20 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        if (_mode is Mode.KeepSpawning) {
-            SpawnEnemiesMode1();
+        switch (_mode) {
+            case Mode.KeepSpawning:
+                SpawnEnemiesMode1();
+            break; 
+
+            case Mode.WaitEnemiesDeath:
+                SpawnEnemiesMode2();
+            break;
+            
+            case Mode.WaitEnemiesDeathToInfinity:
+                SpawnEnemiesMode3();
+            break;
         }
-        else {
-            SpawnEnemiesMode2();
-        }
+
     }
 
     private void SpawnEnemiesMode1()
@@ -93,6 +102,26 @@ public class EnemySpawner : MonoBehaviour
         if (_enemiesSpawned >= wave.EnemiesAmount && EnemiesInRoom <= 0) {
             StartCoroutine(NextWave(_nextWaveCooldown));
             _canChangeWave = 0;
+        }
+    }
+    
+    private void SpawnEnemiesMode3()
+    {
+        Wave wave = _waves[_waveCount];
+
+        if (Time.time >= _nextSpawn && _enemiesSpawned < wave.EnemiesAmount) {
+            Vector2 randomOffset = new Vector2(Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y));
+
+            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)], (Vector2) transform.position + randomOffset, Quaternion.identity);
+
+            EnemiesInRoom++;
+            _enemiesSpawned++;
+            _nextSpawn = Time.time + 1f / wave.SpawnRate;
+        }
+
+        if (_enemiesSpawned >= wave.EnemiesAmount && EnemiesInRoom <= 0) {
+            _waveCount = 0;
+            _enemiesSpawned = 0;
         }
     }
 

@@ -37,12 +37,13 @@ namespace Utils
         }
     }
 
+#if UNITY_EDITOR
     namespace Editor
     {
         [CustomPropertyDrawer(typeof(Optional<>))]
-        public class OptionalPropertyDrawer : PropertyDrawer
+        public class OptionalPropertyDrawer : UnityEditor.PropertyDrawer
         {
-            public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+            public override float GetPropertyHeight(UnityEditor.SerializedProperty property, GUIContent label)
             {
                 var valueProperty = property.FindPropertyRelative("_value");
 
@@ -51,7 +52,7 @@ namespace Utils
 
             public override void OnGUI(
                 Rect position,
-                SerializedProperty property,
+                UnityEditor.SerializedProperty property,
                 GUIContent label
             )
             {
@@ -81,4 +82,5 @@ namespace Utils
             }
         }
     }
+#endif
 }
