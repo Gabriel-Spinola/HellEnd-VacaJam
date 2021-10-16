@@ -8,9 +8,14 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("References")]
     [SerializeField] private InputManager _input;
+    [SerializeField] private Weapon _weapon;
 
     [Header("Stats")]
     [SerializeField] private float _health;
+
+    [Header("Config")]
+    [Range(0.1f, 10f)]
+    [SerializeField] private float _maxWeaponRotationDistance = 1f;
 
     [Header("Movement")]
     [SerializeField] private float _jumpForce;
@@ -42,6 +47,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (_input.KeyJump && _collision.IsGrounded) {
             Jump();
         }
+
+        float lookAngle = LookDir.GetDir(transform.position);
+
+        _weapon.UseWeapon(_input.KeyShoot, new OptionalNonSerializable<GameObject>(this.gameObject));
+        _weapon.LookAngle = lookAngle;
+        _weapon.transform.position = transform.position + LookDir.AngleAxisToVector3(lookAngle, _maxWeaponRotationDistance);
     }
 
     private void FixedUpdate()
@@ -73,7 +84,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         _isJumpDisabled = true;
 
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.25f);
 
         _isJumpDisabled = false;
     }

@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold"
+                },
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "fc5fd052-9758-429a-97c7-a40e27b86155",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -105,6 +113,17 @@
                     "processors": "",
                     "groups": "Mouse/Keyboard",
                     "action": "JumpHold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cda08ac6-b81b-4f91-95d6-d634d7c37ca8",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse/Keyboard",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

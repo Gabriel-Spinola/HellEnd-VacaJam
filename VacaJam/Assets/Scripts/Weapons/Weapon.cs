@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected Transform ShootTransform;
     [SerializeField] protected WeaponInfo WeaponInfo;
 
-    [SerializeField] protected float BulletSpeed;
+    [SerializeField] protected Optional<float> BulletSpeed;
+
+    [SerializeField] protected float Spread;
 
     [HideInInspector] public float LookAngle = 0f;
 
@@ -25,8 +28,10 @@ public abstract class Weapon : MonoBehaviour
         CurrentAmmo = WeaponInfo.Ammo;
     }
 
-    // protected abstract void Shoot(OptionalNonSerializeble<GameObject> owner);
-    // protected abstract void Shoot(OptionalNonSerializeble<GameObject> owner);
+    protected abstract void Shoot(OptionalNonSerializable<GameObject> owner);
+
+    public abstract void UseWeapon(bool keyShoot, OptionalNonSerializable<GameObject> owner);
+    public abstract void UseWeapon(OptionalNonSerializable<GameObject> owner);
 
     protected abstract IEnumerator Reload(float time);
 }

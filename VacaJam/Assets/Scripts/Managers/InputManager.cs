@@ -11,11 +11,13 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] private bool _keyJump;
     [SerializeField] private bool _keyJumpHold;
+    [SerializeField] private bool _keyShoot;
 
     public Vector2 MovementVec => _movementVec;
 
     public bool KeyJump => _keyJump;
     public bool KeyJumpHold => _keyJumpHold;
+    public bool KeyShoot => _keyShoot;
 
     private void Awake()
     {
@@ -34,9 +36,10 @@ public class InputManager : MonoBehaviour
 
         _movementVec = InputAction.Player.Movement.ReadValue<Vector2>();
         _keyJumpHold = InputAction.Player.JumpHold.ReadValue<float>() > 0f;
-        _keyJump = InputAction.Player.Jump.triggered;
 
-        Debug.Log
-            (KeyJump);
+        _keyJump = InputAction.Player.Jump.triggered;
+        _keyShoot = InputAction.Player.Shoot.triggered;
+
+        Debug.Log(KeyShoot);
     }
 }
