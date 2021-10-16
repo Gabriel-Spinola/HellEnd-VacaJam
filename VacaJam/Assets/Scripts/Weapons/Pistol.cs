@@ -24,6 +24,16 @@ public class Pistol : Weapon
         projectile.Damage = WeaponInfo.Damage;
         projectile.Owner = owner;
 
+        // @ upgrade
+        if (WeaponInfo.Recoil.Enabled) {
+            PlayerController player = owner.Value.GetComponent<PlayerController>();
+
+            player.Rigidbody.velocity = new Vector2(Mathf.Lerp(player.Rigidbody.velocity.x, 0f, 16f * Time.deltaTime), player.Rigidbody.velocity.y);
+
+            player.Rigidbody.velocity -= (Vector2) LookDir.GetDir(LookAngle) * WeaponInfo.Recoil.Value;
+            StartCoroutine(player.DisableMovement(.1f));
+        }
+
         projectile.gameObject.SetActive(true);
     }
 

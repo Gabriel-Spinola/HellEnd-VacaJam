@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Debug")]
     [SerializeField] private bool _shouldDie;
 
+    public Rigidbody2D Rigidbody => _rigidbody;
+
     private Rigidbody2D _rigidbody;
     private CollisionDetection _collision;
 
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private int _canJump = 0;
 
-    private bool _isJumpDisabled;
+    private bool _isJumpDisabled = false;
+    private bool _canMove = true;
 
 
     private void Awake()
@@ -78,7 +81,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        Movement();
+        if (_canMove)
+            Movement();
     }
 
     private void Movement()
@@ -123,6 +127,15 @@ public class PlayerController : MonoBehaviour, IDamageable
         else if (_rigidbody.velocity.y > 0 && !_input.KeyJumpHold) {
             _rigidbody.velocity += (_lowJumpMultiplier - 1) * Physics.gravity.y * Time.deltaTime * Vector2.up;
         }
+    }
+
+    public IEnumerator DisableMovement(float time)
+    {
+        _canMove = false;
+
+        yield return new WaitForSeconds(time);
+
+        _canMove = true;
     }
 
     public void TakeDamage(float damage)

@@ -1502,6 +1502,9 @@ MonoBehaviour:
   BulletSpeed:
     _enabled: 0
     _value: 0
+  Recoil:
+    _enabled: 1
+    _value: 3
   Spread: 3
   LookAngle: 0
 --- !u!212 &1106453488

@@ -17,3 +17,6 @@ MonoBehaviour:
   Ammo: 10
   Damage: 10
   FireRate: 1
+  Recoil:
+    _enabled: 1
+    _value: 3
