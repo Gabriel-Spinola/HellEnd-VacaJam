@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Jump")]
     [SerializeField] private float _fallMultiplier;
     [SerializeField] private float _lowJumpMultiplier;
+    [SerializeField] private float _jumpBufferLength = .1f;
+
+    [SerializeField] private int _hangTime = 8;
 
     [Header("Debug")]
     [SerializeField] private bool _shouldDie;
@@ -32,7 +35,12 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody2D _rigidbody;
     private CollisionDetection _collision;
 
+    private float _jumpBufferCount;
+
+    private int _canJump = 0;
+
     private bool _isJumpDisabled;
+
 
     private void Awake()
     {
@@ -44,11 +52,24 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         BetterJump();
 
-        if (_input.KeyJump && _collision.IsGrounded) {
-            Jump();
+        float lookAngle = LookDir.GetDir(transform.position);
+
+        _canJump--;
+
+        if (_collision.IsGrounded) {
+            _canJump = _hangTime;
         }
 
-        float lookAngle = LookDir.GetDir(transform.position);
+        if (_input.KeyJump) {
+            _jumpBufferCount = _jumpBufferLength;
+        }
+        else {
+            _jumpBufferCount -= Time.deltaTime;
+        }
+
+        if (_canJump > 0 && _jumpBufferCount >= 0) {
+            Jump();
+        }
 
         _weapon.UseWeapon(_input.KeyShoot, new OptionalNonSerializable<GameObject>(this.gameObject));
         _weapon.LookAngle = lookAngle;

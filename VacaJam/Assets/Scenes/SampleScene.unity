@@ -1901,7 +1901,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1909880208}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fb56b8cf0711f6f409b1a24a4677a314, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1936,9 +1936,11 @@ MonoBehaviour:
   _maxWeaponRotationDistance: 1
   _jumpForce: 12
   _moveSpeed: 10
-  _friction: 5
+  _friction: 11
   _fallMultiplier: 4
   _lowJumpMultiplier: 5
+  _jumpBufferLength: 0.1
+  _hangTime: 9
   _shouldDie: 0
 --- !u!114 &1909880213
 MonoBehaviour:
