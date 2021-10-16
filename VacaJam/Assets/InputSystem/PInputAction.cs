@@ -64,6 +64,17 @@ public class @PInputAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""1d859004-f4be-4dbd-ace0-920422e319a0"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse/Keyboard"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""MoveDir"",
                     ""id"": ""6bd6c5f0-0763-46e6-8ae2-d52ba00f5c97"",
                     ""path"": ""2DVector"",
@@ -73,28 +84,6 @@ public class @PInputAction : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""94595bc3-165d-4007-b9f3-776812349012"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse/Keyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""fad0f410-c30d-4b66-bbb8-d902e1cd7014"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse/Keyboard"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
@@ -122,7 +111,18 @@ public class @PInputAction : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""bd0fe9ac-02fa-4904-bfb2-e74a3e6bf312"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Mouse/Keyboard"",
+                    ""action"": ""JumpHold"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""760b7fee-cfd6-47a6-8fcc-c2508f5f8da4"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Mouse/Keyboard"",
                     ""action"": ""JumpHold"",

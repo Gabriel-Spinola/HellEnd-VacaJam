@@ -12,5 +12,4 @@ public class WeaponInfo : ScriptableObject
     public int Ammo;
     public float Damage;
     public float FireRate;
-    public Optional<float> Recoil;
 }

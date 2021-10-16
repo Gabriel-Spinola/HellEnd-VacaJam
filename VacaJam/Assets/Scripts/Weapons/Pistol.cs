@@ -18,20 +18,15 @@ public class Pistol : Weapon
                 rotation: Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, LookAngle + Random.Range(-Spread, Spread))
             ).GetComponent<Projectile>();
 
-        if (BulletSpeed.Enabled)
-            projectile.Speed = BulletSpeed.Value;
-
         projectile.Damage = WeaponInfo.Damage;
         projectile.Owner = owner;
 
-        // @ upgrade
-        if (WeaponInfo.Recoil.Enabled) {
-            PlayerController player = owner.Value.GetComponent<PlayerController>();
+        if (BulletSpeed.Enabled) {
+            projectile.Speed = BulletSpeed.Value;
+        }
 
-            player.Rigidbody.velocity = new Vector2(Mathf.Lerp(player.Rigidbody.velocity.x, 0f, 16f * Time.deltaTime), player.Rigidbody.velocity.y);
-
-            player.Rigidbody.velocity -= (Vector2) LookDir.GetDir(LookAngle) * WeaponInfo.Recoil.Value;
-            StartCoroutine(player.DisableMovement(.1f));
+        if (Recoil.Enabled) {
+            owner.Value.GetComponent<IShooteable>().ShootFeedback(Recoil.Value, LookAngle);
         }
 
         projectile.gameObject.SetActive(true);

@@ -15,7 +15,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected LayerMask WhatIsTarget;
 
     [Header("Enemy Stats")]
-    [SerializeField] private float _health;
+    [SerializeField] protected float Health;
 
     protected Rigidbody2D Rigidbody;
 
@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Start()
     {
-        CurrentHealth = _health;
+        CurrentHealth = Health;
     }
 
     public abstract void TakeDamage(float damage);
@@ -41,6 +41,7 @@ public abstract class PathFinderEnemy : Enemy
 {
     [Header("Seeking config")]
     [SerializeField] protected float NextWaypointDistance = 3f;
+    [SerializeField] private float _refreshPathRate;
 
     protected Transform TargetTransform;
     protected Path Path;
@@ -53,6 +54,13 @@ public abstract class PathFinderEnemy : Enemy
         base.Awake();
 
         Seeker = GetComponent<Seeker>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        InvokeRepeating(nameof(UpdatePath), 0f, _refreshPathRate);
     }
 
     protected virtual void UpdatePath()

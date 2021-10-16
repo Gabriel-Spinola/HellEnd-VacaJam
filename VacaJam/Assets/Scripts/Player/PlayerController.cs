@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using Utils;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CollisionDetection))]
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 {
     [Header("References")]
     [SerializeField] private InputManager _input;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private CollisionDetection _collision;
 
     private float _jumpBufferCount;
+    private float _lookAngle;
 
     private int _canJump = 0;
 
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         BetterJump();
 
-        float lookAngle = LookDir.GetDir(transform.position);
+        _lookAngle = LookDir.GetDir(transform.position);
 
         _canJump--;
 
@@ -75,8 +76,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
         _weapon.UseWeapon(_input.KeyShoot, new OptionalNonSerializable<GameObject>(this.gameObject));
-        _weapon.LookAngle = lookAngle;
-        _weapon.transform.position = transform.position + LookDir.AngleAxisToVector3(lookAngle, _maxWeaponRotationDistance);
+        _weapon.LookAngle = _lookAngle;
+        _weapon.transform.position = transform.position + LookDir.AngleAxisToVector3(_lookAngle, _maxWeaponRotationDistance);
 
         if (transform.position.y < -14)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -139,6 +140,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(time);
 
         _canMove = true;
+    }
+
+    public void ShootFeedback(float force, float angle)
+    {
+        _rigidbody.velocity = new Vector2(Mathf.Lerp(Rigidbody.velocity.x, 0f, 16f * Time.deltaTime), Rigidbody.velocity.y);
+
+        _rigidbody.velocity -= (Vector2) LookDir.GetDir(angle) * force;
+        StartCoroutine(DisableMovement(.1f));
     }
 
     public void TakeDamage(float damage)

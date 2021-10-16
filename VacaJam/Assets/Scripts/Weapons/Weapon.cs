@@ -10,6 +10,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected WeaponInfo WeaponInfo;
 
     [SerializeField] protected Optional<float> BulletSpeed;
+    [SerializeField] protected Optional<float> Recoil;
 
     [SerializeField] protected float Spread;
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9115715020141532729}
   - component: {fileID: 9115715020141532711}
   - component: {fileID: 9115715020141532728}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,6 +102,9 @@ MonoBehaviour:
   BulletSpeed:
     _enabled: 0
     _value: 0
+  Recoil:
+    _enabled: 0
+    _value: 0
   Spread: 3
   LookAngle: 0
 --- !u!1 &9115715020945080391
@@ -117,7 +120,7 @@ GameObject:
   - component: {fileID: 9115715020945080389}
   - component: {fileID: 9115715020945080387}
   - component: {fileID: 9115715020945080386}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: '[Player]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9115715021082989996}
   - component: {fileID: 9115715021082989995}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlayerGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9115715021673381623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GunTip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
