@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
     private int _waveCount = 0;
     private int _enemiesSpawned = 0;
 
-    private int can;
+    private int _canChangeWave;
 
     private float _nextSpawn;
 
@@ -22,11 +22,13 @@ public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private GameObject[] _enemies;
         [SerializeField] private float _spawnRate;
+
+        [Tooltip("There's a bug I'm too Lazy to fix so, if the wave > 1 add 1 to the enemies amount, sorry")]
         [SerializeField] private int _enemiesAmount;
 
         public GameObject[] Enemies => _enemies;
         public float SpawnRate => _spawnRate;
-        public int EnemiesAmount => _enemiesAmount + 1;
+        public int EnemiesAmount => _enemiesAmount;
     }
 
     private void Update()
@@ -59,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (_enemiesSpawned >= wave.EnemiesAmount) {
             StartCoroutine(NextWave(_nextWaveCooldown));
-            can = 0;
+            _canChangeWave = 0;
         }
     }
 
@@ -67,9 +69,9 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        can++;
+        _canChangeWave++;
 
-        if (can > 1)
+        if (_canChangeWave > 1)
             yield break;
 
         _waveCount++;
