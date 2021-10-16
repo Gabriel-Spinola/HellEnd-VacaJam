@@ -33,7 +33,12 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public abstract void TakeDamage(float damage);
 
-    public abstract void Die();
+    public virtual void Die()
+    {
+        PlayerManager.PlayerKills++;
+
+        FindObjectOfType<EnemySpawner>().EnemiesInRoom--;
+    }
 }
 
 [RequireComponent(typeof(Seeker))]
@@ -79,5 +84,8 @@ public abstract class PathFinderEnemy : Enemy
     }
 
     public abstract override void TakeDamage(float damage);
-    public abstract override void Die();
+    public override void Die()
+    {
+        base.Die();
+    }
 }

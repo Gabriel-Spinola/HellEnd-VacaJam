@@ -11,6 +11,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 _maxSpawnOffset;
     [SerializeField] private Vector2 _minSpawnOffset;
 
+    [SerializeField] private Mode _mode;
+
+    [HideInInspector] public int EnemiesInRoom = 0;
+
+    private enum Mode
+    {
+        KeepSpawning,
+        WaitEnemiesDeath
+    }
+
+
     private int _waveCount = 0;
     private int _enemiesSpawned = 0;
 
@@ -23,7 +34,6 @@ public class EnemySpawner : MonoBehaviour
         [SerializeField] private GameObject[] _enemies;
         [SerializeField] private float _spawnRate;
 
-        [Tooltip("There's a bug I'm too Lazy to fix so, if the wave > 1 add 1 to the enemies amount, sorry")]
         [SerializeField] private int _enemiesAmount;
 
         public GameObject[] Enemies => _enemies;
@@ -38,28 +48,49 @@ public class EnemySpawner : MonoBehaviour
 
             return;
         }
-        
-        SpawnEnemies();
+
+        if (_mode is Mode.KeepSpawning) {
+            SpawnEnemiesMode1();
+        }
+        else {
+            SpawnEnemiesMode2();
+        }
     }
 
-    private void SpawnEnemies()
+    private void SpawnEnemiesMode1()
     {
         Wave wave = _waves[_waveCount];
 
         if (Time.time >= _nextSpawn && _enemiesSpawned < wave.EnemiesAmount) {
-            Instantiate(
-                original: wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)],
-                position: (Vector2) transform.position + new Vector2(
-                            Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y)
-                          ),
-                rotation: Quaternion.identity
-            );
+            Vector2 randomOffset = new Vector2(Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y));
+
+            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)], (Vector2) transform.position + randomOffset, Quaternion.identity);
 
             _enemiesSpawned++;
             _nextSpawn = Time.time + 1f / wave.SpawnRate;
         }
 
         if (_enemiesSpawned >= wave.EnemiesAmount) {
+            StartCoroutine(NextWave(_nextWaveCooldown));
+            _canChangeWave = 0;
+        }
+    }
+
+    private void SpawnEnemiesMode2()
+    {
+        Wave wave = _waves[_waveCount];
+
+        if (Time.time >= _nextSpawn && _enemiesSpawned < wave.EnemiesAmount) {
+            Vector2 randomOffset = new Vector2(Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y));
+
+            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)], (Vector2) transform.position + randomOffset, Quaternion.identity);
+
+            EnemiesInRoom++;
+            _enemiesSpawned++;
+            _nextSpawn = Time.time + 1f / wave.SpawnRate;
+        }
+
+        if (_enemiesSpawned >= wave.EnemiesAmount && EnemiesInRoom <= 0) {
             StartCoroutine(NextWave(_nextWaveCooldown));
             _canChangeWave = 0;
         }
@@ -75,5 +106,6 @@ public class EnemySpawner : MonoBehaviour
             yield break;
 
         _waveCount++;
+        _enemiesSpawned = 0;
     }
 }
