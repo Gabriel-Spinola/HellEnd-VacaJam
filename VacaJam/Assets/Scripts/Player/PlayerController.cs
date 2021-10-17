@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 using Utils;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CollisionDetection))]
+[RequireComponent(typeof(Collider2D))]
 public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 {
     [Header("References")]
     [SerializeField] private InputManager _input;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private PlayerGraphics _playerGraphics;
+    [SerializeField] private ParticleSystem _deathParticles;
 
     [Header("Stats")]
     [SerializeField] private float _health;
@@ -36,12 +38,18 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     [Header("Debug")]
     [SerializeField] private bool _shouldDie;
 
+    [HideInInspector] public bool IsEnabled = true;
+
     public Rigidbody2D Rigidbody => _rigidbody;
     public InputManager Input => _input;
 
     private Rigidbody2D _rigidbody;
     private CollisionDetection _collision;
+    private Collider2D _collider;
 
+    private Vector3 _spawnPosition;
+
+    private float _currentHealth;
     private float _jumpBufferCount;
     private float _lookAngle;
 
@@ -56,10 +64,21 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     {
         _collision = GetComponent<CollisionDetection>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
+    }
+
+    private void Start()
+    {
+        _spawnPosition = transform.position;
+
+        _currentHealth = _health;
     }
 
     private void Update()
     {
+        if (!IsEnabled)
+            return;
+
         BetterJump();
 
         _lookAngle = LookDir.GetDir(transform.position);
@@ -98,13 +117,16 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         _weapon.transform.position = transform.position + LookDir.AngleAxisToVector3(_lookAngle, _maxWeaponRotationDistance);
 
         if (transform.position.y < -14)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            TakeDamage(Mathf.Infinity);
 
         _isGroundedPrev = _collision.IsGrounded;
     }
 
     private void FixedUpdate()
     {
+        if (!IsEnabled)
+            return;
+
         if (_canMove)
             Movement();
     }
@@ -159,6 +181,21 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         }
     }
 
+    private IEnumerator ResetPlayer(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        _playerGraphics.SetTrigger("Revive");
+        _deathParticles.Play();
+        transform.position = _spawnPosition;
+
+        IsEnabled = true;
+        _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        _collider.enabled = true;
+        _playerGraphics.SpriteRenderer.enabled = true;
+        _currentHealth = _health;
+    }
+
     public IEnumerator DisableMovement(float time)
     {
         _canMove = false;
@@ -185,10 +222,18 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
     public void TakeDamage(float damage)
     {
-        _health -= damage;
+        _currentHealth -= damage;
 
-        if (_health <= 0)
-            Die();
+        StartCoroutine(_playerGraphics.Blink());
+
+        if (_currentHealth <= 0) {
+            _playerGraphics.SetTrigger("Death");
+            IsEnabled = false;
+            _rigidbody.bodyType = RigidbodyType2D.Static;
+            _collider.enabled = false;
+            
+            AudioManager._I.PlaySound2D("Player-Death");
+        }
     }
 
     public void Die()
@@ -201,8 +246,9 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         }
 #endif
 
-        AudioManager._I.PlaySound2D("Player-Death");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _deathParticles.Play();
+        _playerGraphics.SpriteRenderer.enabled = false;
+        StartCoroutine(ResetPlayer(.6f));
     }
 
     private void OnCollisionEnter2D(Collision2D other)

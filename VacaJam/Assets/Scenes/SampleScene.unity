@@ -9800,11 +9800,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[1].theme
-      value: 
-      objectReference: {fileID: 8300000, guid: 471ba4728902476459304b2fa338479a, type: 3}
     - target: {fileID: 3240425907172566815, guid: ebfecbcf208db57459f435e24d772ed5,
         type: 3}
       propertyPath: m_Name
@@ -9874,11 +9869,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648577303}
     m_Modifications:
+    - target: {fileID: 7031532017864490521, guid: 343d812fdb6202345a00514433374bd8,
+        type: 3}
+      propertyPath: _hitMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 51ddea52896324040bb4d9a040bcccd1, type: 2}
     - target: {fileID: 9115715020945080387, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
       propertyPath: _input
       value: 
       objectReference: {fileID: 946327277}
+    - target: {fileID: 9115715020945080387, guid: 343d812fdb6202345a00514433374bd8,
+        type: 3}
+      propertyPath: _health
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 9115715020945080390, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
       propertyPath: m_RootOrder
