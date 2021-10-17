@@ -210,11 +210,10 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
             if (!_collision.IsGrounded && Physics2D.Raycast(transform.position, Vector2.down, _attackLine)) {
                 GameObject @object = other.gameObject;
 
-                @object.GetComponent<IDamageable>()?.TakeDamage(2f);
+                @object.GetComponent<IDamageable>()?.TakeDamage(10f);
                 @object.GetComponent<IShooteable>()?.ShootFeedback(_jumpForce, LookDir.GetDir(@object.transform.position, transform.position));
 
                 Jump();
-                Debug.Log("a");
             }
         }
     }
