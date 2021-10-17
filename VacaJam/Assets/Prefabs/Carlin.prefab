@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 671321573745582167}
   - component: {fileID: 671321573745582164}
   - component: {fileID: 671321573745582504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Carlin
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,10 +197,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 671321573745582165}
     m_Modifications:
+    - target: {fileID: 3987307816940365663, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5319953848442698637, guid: 44cacd9c07979bb429384b31547a0b34,
         type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319953848442698637, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5319953848442698638, guid: 44cacd9c07979bb429384b31547a0b34,
         type: 3}
@@ -256,6 +266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319953849020322687, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44cacd9c07979bb429384b31547a0b34, type: 3}

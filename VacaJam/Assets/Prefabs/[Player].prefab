@@ -136,9 +136,10 @@ MonoBehaviour:
     _value: 0
   Recoil:
     _enabled: 1
-    _value: 5
-  Spread: 5
+    _value: 4
+  Spread: 30
   LookAngle: 0
+  _pelleteCount: 5
 --- !u!1 &439274859988369608
 GameObject:
   m_ObjectHideFlags: 0
@@ -14746,7 +14747,7 @@ GameObject:
   - component: {fileID: 9115715020945080386}
   m_Layer: 3
   m_Name: '[Player]'
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14827,7 +14828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 0}
-  _weapon: {fileID: 0}
+  _weapon: {fileID: 6714108479575906023}
   _playerGraphics: {fileID: 7031532017864490521}
   _health: 9000000
   _maxWeaponRotationDistance: 1
@@ -14838,6 +14839,7 @@ MonoBehaviour:
   _lowJumpMultiplier: 5
   _jumpBufferLength: 0.1
   _hangTime: 9
+  _attackLine: 0
   _shouldDie: 0
 --- !u!114 &9115715020945080386
 MonoBehaviour:
@@ -14938,8 +14940,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 153201741
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1163188822636830595, guid: c4102e966b456924c8d245d6f5451145,
     type: 3}

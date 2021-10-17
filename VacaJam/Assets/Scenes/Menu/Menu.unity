@@ -2039,38 +2039,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
         type: 3}
-      propertyPath: sceneThemes.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[0].name
-      value: Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[1].name
-      value: SampleScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[0].theme
-      value: 
-      objectReference: {fileID: 8300000, guid: 9e584387d1d88f64299c0c8890decba9, type: 3}
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[1].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[1].theme
-      value: 
-      objectReference: {fileID: 8300000, guid: 7bdefef8e00e92c438363a2e5308e8fd, type: 3}
-    - target: {fileID: 3240425907172566813, guid: ebfecbcf208db57459f435e24d772ed5,
-        type: 3}
-      propertyPath: sceneThemes.Array.data[1].fadeDuration
-      value: 2
+      propertyPath: sceneThemes.Array.data[0].fadeDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3240425907172566815, guid: ebfecbcf208db57459f435e24d772ed5,
         type: 3}

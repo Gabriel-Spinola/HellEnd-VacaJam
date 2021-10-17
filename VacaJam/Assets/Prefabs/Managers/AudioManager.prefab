@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3240425907172566882}
   - component: {fileID: 3240425907172566813}
   - component: {fileID: 3240425907172566812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AudioManager
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,8 +58,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneThemes:
+  - name: Menu
+    theme: {fileID: 8300000, guid: 9e584387d1d88f64299c0c8890decba9, type: 3}
+    fadeDuration: 2
+    pitch: 1
   - name: SampleScene
-    theme: {fileID: 8300000, guid: 7bdefef8e00e92c438363a2e5308e8fd, type: 3}
+    theme: {fileID: 8300000, guid: c8461b96890b05a4ea533bcbab91a807, type: 3}
     fadeDuration: 2
     pitch: 1
 --- !u!114 &3240425907172566812

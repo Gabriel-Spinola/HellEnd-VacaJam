@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
     [SerializeField] private int _hangTime = 8;
 
+    [Range(.1f, 10f)]
+    [SerializeField] private float _attackLine;
+
     [Header("Debug")]
     [SerializeField] private bool _shouldDie;
 
@@ -199,5 +202,25 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
         AudioManager._I.PlaySound2D("Player-Death");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.gameObject.CompareTag("Enemy")) {
+            if (!_collision.IsGrounded && Physics2D.Raycast(transform.position, Vector2.down, _attackLine)) {
+                GameObject @object = other.gameObject;
+
+                @object.GetComponent<IDamageable>()?.TakeDamage(2f);
+                @object.GetComponent<IShooteable>()?.ShootFeedback(_jumpForce, LookDir.GetDir(@object.transform.position, transform.position));
+
+                Jump();
+                Debug.Log("a");
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(transform.position, (Vector2) transform.position + new Vector2(0f, -_attackLine));
     }
 }

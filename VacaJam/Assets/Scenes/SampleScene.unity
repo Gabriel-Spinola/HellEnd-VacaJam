@@ -3378,18 +3378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1735786705 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6714108479575906023, guid: 343d812fdb6202345a00514433374bd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 9115715021207877079}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddbf448ad1ef354cae8c42800ea2e7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1784890751
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,21 +3725,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648577303}
     m_Modifications:
-    - target: {fileID: 6714108479575906023, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: Spread
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 6714108479575906023, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: Recoil._value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6714108479575906023, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: _pelleteCount
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 9115715020945080387, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
       propertyPath: _input
@@ -3759,9 +3732,9 @@ PrefabInstance:
       objectReference: {fileID: 946327277}
     - target: {fileID: 9115715020945080387, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
-      propertyPath: _weapon
-      value: 
-      objectReference: {fileID: 1735786705}
+      propertyPath: _attackLine
+      value: 0.96
+      objectReference: {fileID: 0}
     - target: {fileID: 9115715020945080390, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
       propertyPath: m_RootOrder
@@ -3821,21 +3794,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Player]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 9115715020945080391, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9115715021082989995, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9115715021082989995, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 153201741
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 343d812fdb6202345a00514433374bd8, type: 3}
