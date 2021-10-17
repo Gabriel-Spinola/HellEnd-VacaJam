@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         if (_collision.IsGrounded) {
             _canJump = _hangTime;
             _isBetterJumpDisabled = false;
+            _rigidbody.gravityScale = 2;
         }
 
         if (_input.KeyJump) {
@@ -166,10 +167,12 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
             _rigidbody.velocity = new Vector2(Mathf.Lerp(Rigidbody.velocity.x, 0f, 16f * Time.deltaTime), Rigidbody.velocity.y);
         }
         else {
-            _isBetterJumpDisabled = true;
+            _rigidbody.gravityScale = 3f;
         }
 
-        _rigidbody.velocity -= (Vector2) LookDir.GetDir(angle) * force;
+        _isBetterJumpDisabled = true;
+
+        _rigidbody.velocity -= ((Vector2) LookDir.GetDir(angle)).normalized * force;
         StartCoroutine(DisableMovement(.1f));
     }
 
