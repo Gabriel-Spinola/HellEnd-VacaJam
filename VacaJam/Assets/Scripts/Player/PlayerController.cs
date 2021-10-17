@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         if (_collision.IsGrounded && !_isGroundedPrev) {
             _playerGraphics.SetHeightTrigger("Squash");
             _playerGraphics.PlayerJumpParticle();
+            AudioManager._I.PlaySound2D("Player-Land", 1.4f, 120);
         }
 
         if (_collision.IsGrounded) {
