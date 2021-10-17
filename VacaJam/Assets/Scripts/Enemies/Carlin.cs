@@ -35,6 +35,8 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         _lookAngle = LookDir.GetDir(transform.position, TargetTransform.position);
 
+        transform.localScale = new Vector2(_targetDir.x < 0 ? 1 : -1, transform.localScale.y);
+
         if (!Physics2D.Linecast(transform.position, TargetTransform.position, _whatIsBlock) && _targetObject.IsEnabled) {
             Attack();
         }
