@@ -35,6 +35,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
+        AudioManager._I.PlaySound2D("Enemy-Hit");
+
         PlayerManager.PlayerKills++;
 
         FindObjectOfType<EnemySpawner>().EnemiesInRoom--;

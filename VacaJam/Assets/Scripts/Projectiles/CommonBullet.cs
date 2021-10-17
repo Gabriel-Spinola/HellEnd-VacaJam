@@ -23,7 +23,7 @@ public class CommonBullet : Projectile
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name.Contains(gameObject.name))
+        if (other.gameObject.name.Contains(gameObject.name) || other.CompareTag("CameraCollider"))
             return;
 
         // $ Optimize it later

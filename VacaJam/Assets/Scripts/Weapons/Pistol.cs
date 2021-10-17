@@ -14,6 +14,7 @@ public class Pistol : Weapon
     protected sealed override void Shoot(OptionalNonSerializable<GameObject> owner)
     {
         ShootParticle.Play();
+        AudioManager._I.PlaySound2D("Pistol-Shoot");
 
         Projectile projectile = Instantiate(
                 original: WeaponInfo.BulletPrefab,

@@ -26,6 +26,7 @@ public class Shotgun : Weapon
     protected sealed override void Shoot(OptionalNonSerializable<GameObject> owner)
     {
         ShootParticle.Play();
+        AudioManager._I.PlaySound2D("Shotgun-Shoot");
 
         for (int i = 0; i < _pelleteCount; i++) {
             _pelleteRotations[i] = Random.rotation;

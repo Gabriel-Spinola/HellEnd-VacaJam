@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     {
         if (_input.MovementVec.x != 0) {
             _rigidbody.velocity = new Vector2(_input.MovementVec.x * _moveSpeed, _rigidbody.velocity.y);
+
+            //AudioManager._I.PlaySound2D("Walk");
         }
         else {
             _rigidbody.velocity = new Vector2(Mathf.Lerp(_rigidbody.velocity.x, 0f, _friction * Time.fixedDeltaTime), _rigidbody.velocity.y);
@@ -120,6 +122,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         if (_isJumpDisabled)
             return;
 
+        AudioManager._I.PlaySound2D("Jump");
         _playerGraphics.SetHeightTrigger("Stretch");
         _playerGraphics.PlayerJumpParticle();
 
@@ -194,6 +197,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         }
 #endif
 
+        AudioManager._I.PlaySound2D("Player-Death");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
