@@ -16,4 +16,4 @@ MonoBehaviour:
     type: 3}
   Ammo: 25
   Damage: 6
-  FireRate: 1
+  FireRate: 10

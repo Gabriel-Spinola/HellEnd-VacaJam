@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a89969e45608c428e92ebfcee98db3, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 0}
-  Ammo: 0
-  Damage: 0
-  FireRate: 0
+  BulletPrefab: {fileID: 8082318825415896153, guid: 129f8e8bc7d6faf44a98e8002109d928,
+    type: 3}
+  Ammo: 5
+  Damage: 20
+  FireRate: 1
