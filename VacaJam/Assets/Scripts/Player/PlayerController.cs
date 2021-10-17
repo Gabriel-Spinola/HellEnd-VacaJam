@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     [Header("References")]
     [SerializeField] private InputManager _input;
     [SerializeField] private Weapon _weapon;
+    [SerializeField] private PlayerGraphics _playerGraphics;
 
     [Header("Stats")]
     [SerializeField] private float _health;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     [SerializeField] private bool _shouldDie;
 
     public Rigidbody2D Rigidbody => _rigidbody;
+    public InputManager Input => _input;
 
     private Rigidbody2D _rigidbody;
     private CollisionDetection _collision;
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
     private bool _isJumpDisabled = false;
     private bool _canMove = true;
-
+    private bool _isGroundedPrev = false;
 
     private void Awake()
     {
@@ -59,6 +61,15 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         _lookAngle = LookDir.GetDir(transform.position);
 
         _canJump--;
+
+        _playerGraphics.Side = _lookAngle < 90 && _lookAngle > -90 ? 1 : -1;
+
+        _playerGraphics.FlipObject();
+
+        if (_collision.IsGrounded && !_isGroundedPrev) {
+            _playerGraphics.SetHeightTrigger("Squash");
+            _playerGraphics.PlayerJumpParticle();
+        }
 
         if (_collision.IsGrounded) {
             _canJump = _hangTime;
@@ -81,6 +92,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
         if (transform.position.y < -14)
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        _isGroundedPrev = _collision.IsGrounded;
     }
 
     private void FixedUpdate()
@@ -103,6 +116,9 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     {
         if (_isJumpDisabled)
             return;
+
+        _playerGraphics.SetHeightTrigger("Stretch");
+        _playerGraphics.PlayerJumpParticle();
 
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _jumpForce);
 
