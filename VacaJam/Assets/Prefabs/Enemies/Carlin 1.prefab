@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 671321573745582164}
   - component: {fileID: 671321573745582504}
   m_Layer: 6
-  m_Name: Flier
+  m_Name: Carlin 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 153201741
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 447d4bf4385096d4888c9e31698dd561, type: 3}
+  m_Sprite: {fileID: -1340070296733551782, guid: 7a98337f74eec5c4f84c54cb567b3092,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,14 +105,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.59375, y: 0.90625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.59375, y: 0.90625}
   m_EdgeRadius: 0
 --- !u!50 &671321573745582167
 Rigidbody2D:
@@ -151,6 +152,8 @@ MonoBehaviour:
   WhatIsTarget:
     serializedVersion: 2
     m_Bits: 8
+  _spriteRenderer: {fileID: 671321573745582505}
+  _hitMaterial: {fileID: 2100000, guid: 51ddea52896324040bb4d9a040bcccd1, type: 2}
   Health: 100
   NextWaypointDistance: 3
   _refreshPathRate: 0.5

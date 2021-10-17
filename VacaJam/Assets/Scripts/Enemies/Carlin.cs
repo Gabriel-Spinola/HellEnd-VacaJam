@@ -101,6 +101,8 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         CurrentHealth -= damage;
 
+        StartCoroutine(Blink());
+
         if (CurrentHealth <= 0f) {
             Die();
         }

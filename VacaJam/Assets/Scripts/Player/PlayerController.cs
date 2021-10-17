@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         _collider.enabled = true;
         _playerGraphics.SpriteRenderer.enabled = true;
         _currentHealth = _health;
+        _weapon.gameObject.SetActive(true);
     }
 
     public IEnumerator DisableMovement(float time)
@@ -231,7 +232,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
             IsEnabled = false;
             _rigidbody.bodyType = RigidbodyType2D.Static;
             _collider.enabled = false;
-            
+            _weapon.gameObject.SetActive(false);
+
             AudioManager._I.PlaySound2D("Player-Death");
         }
     }

@@ -13,13 +13,18 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     [Header("Enemy References")]
     [SerializeField] protected LayerMask WhatIsTarget;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Material _hitMaterial;
 
     [Header("Enemy Stats")]
     [SerializeField] protected float Health;
 
+
     protected Rigidbody2D Rigidbody;
 
     protected float CurrentHealth;
+
+    private Material _defaultMaterial;
 
     protected virtual void Awake()
     {
@@ -29,6 +34,17 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     protected virtual void Start()
     {
         CurrentHealth = Health;
+
+        _defaultMaterial = _spriteRenderer.material;
+    }
+
+    protected IEnumerator Blink()
+    {
+        _spriteRenderer.material = _hitMaterial;
+
+        yield return new WaitForSeconds(.1f);
+
+        _spriteRenderer.material = _defaultMaterial;
     }
 
     public abstract void TakeDamage(float damage);
@@ -39,7 +55,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
         PlayerManager.PlayerKills++;
 
-        FindObjectOfType<EnemySpawner>().EnemiesInRoom--;
+        if (FindObjectOfType<EnemySpawner>() != null)
+            FindObjectOfType<EnemySpawner>().EnemiesInRoom--;
     }
 }
 
