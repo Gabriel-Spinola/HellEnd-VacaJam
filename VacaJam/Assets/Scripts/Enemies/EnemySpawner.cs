@@ -73,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= _nextSpawn && _enemiesSpawned < wave.EnemiesAmount) {
             Vector2 randomOffset = new Vector2(Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y));
 
-            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)], (Vector2) transform.position + randomOffset, Quaternion.identity);
+            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length)], (Vector2) transform.position + randomOffset, Quaternion.identity);
 
             _enemiesSpawned++;
             _nextSpawn = Time.time + 1f / wave.SpawnRate;
@@ -92,7 +92,9 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= _nextSpawn && _enemiesSpawned < wave.EnemiesAmount) {
             Vector2 randomOffset = new Vector2(Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y));
 
-            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)], (Vector2) transform.position + randomOffset, Quaternion.identity);
+            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length)], (Vector2) transform.position + randomOffset, Quaternion.identity);
+
+            Debug.Log(wave.Enemies.Length - 1);
 
             EnemiesInRoom++;
             _enemiesSpawned++;
@@ -112,7 +114,7 @@ public class EnemySpawner : MonoBehaviour
         if (Time.time >= _nextSpawn && _enemiesSpawned < wave.EnemiesAmount) {
             Vector2 randomOffset = new Vector2(Random.Range(_minSpawnOffset.x, _maxSpawnOffset.x), Random.Range(_minSpawnOffset.y, _maxSpawnOffset.y));
 
-            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length - 1)], (Vector2) transform.position + randomOffset, Quaternion.identity);
+            Instantiate(wave.Enemies[Random.Range(0, wave.Enemies.Length)], (Vector2) transform.position + randomOffset, Quaternion.identity);
 
             EnemiesInRoom++;
             _enemiesSpawned++;

@@ -2574,9 +2574,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waves:
   - _enemies:
+    - {fileID: 671321573745582162, guid: c07fb8c01c8d45b4d847d276cc8ae0b2, type: 3}
     - {fileID: 671321573745582162, guid: 9602b4d1aca91354b88c49d58380164a, type: 3}
     _spawnRate: 0.65
-    _enemiesAmount: 4
+    _enemiesAmount: 6
   - _enemies:
     - {fileID: 671321573745582162, guid: 9602b4d1aca91354b88c49d58380164a, type: 3}
     _spawnRate: 0.5

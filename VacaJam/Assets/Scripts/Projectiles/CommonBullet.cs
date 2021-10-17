@@ -34,6 +34,9 @@ public class CommonBullet : Projectile
             if (other.gameObject.name.Contains(Owner.Value.name) && Owner.Value.layer == other.gameObject.layer) {
                 return;
             }
+
+            if (other.gameObject.CompareTag(Owner.Value.tag))
+                return;
         }
 
         other.gameObject.GetComponent<IDamageable>()?.TakeDamage(Damage);
