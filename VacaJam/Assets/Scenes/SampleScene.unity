@@ -1037,7 +1037,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9607843, g: 1, b: 0.9098039, a: 1}
   m_Origin: {x: -3, y: -4, z: 0}
   m_Size: {x: 23, y: 8, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -1212,6 +1212,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358419325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8994266212114678218, guid: 343d812fdb6202345a00514433374bd8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9115715021207877079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47495ed0beae4d43b10cb9ee316211a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420273828
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,12 +2523,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9115715021207877079}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &4949685829012005384 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4949685829012005384, guid: 343d812fdb6202345a00514433374bd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 9115715021207877079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9115715021207877079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2524,16 +2530,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648577303}
     m_Modifications:
-    - target: {fileID: 7031532017864490521, guid: 343d812fdb6202345a00514433374bd8,
-        type: 3}
-      propertyPath: _jumpParticle
-      value: 
-      objectReference: {fileID: 4949685829012005384}
+    - target: {fileID: 1241697003, guid: 343d812fdb6202345a00514433374bd8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.25490198
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241697003, guid: 343d812fdb6202345a00514433374bd8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.70980394
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241697003, guid: 343d812fdb6202345a00514433374bd8, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.9411765
+      objectReference: {fileID: 0}
     - target: {fileID: 9115715020945080387, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
       propertyPath: _input
       value: 
       objectReference: {fileID: 946327277}
+    - target: {fileID: 9115715020945080387, guid: 343d812fdb6202345a00514433374bd8,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 358419325}
     - target: {fileID: 9115715020945080390, guid: 343d812fdb6202345a00514433374bd8,
         type: 3}
       propertyPath: m_RootOrder

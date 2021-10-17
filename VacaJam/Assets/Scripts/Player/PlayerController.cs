@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
             Jump();
         }
 
-        _weapon.UseWeapon(_input.KeyShoot, new OptionalNonSerializable<GameObject>(this.gameObject));
+        _weapon.UseWeapon(_input.InputAction.Player, new OptionalNonSerializable<GameObject>(this.gameObject));
         _weapon.LookAngle = _lookAngle;
         _weapon.transform.position = transform.position + LookDir.AngleAxisToVector3(_lookAngle, _maxWeaponRotationDistance);
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Utils;
 
-public class Pistol : Weapon
+public class Rifle : Weapon
 {
     private void Update()
     {
@@ -37,8 +37,12 @@ public class Pistol : Weapon
 
     public sealed override void UseWeapon(PInputAction.PlayerActions inputAction, OptionalNonSerializable<GameObject> owner)
     {
-        if (inputAction.Shoot.triggered) {
-            Shoot(owner);
+        if (inputAction.ShootHold.ReadValue<float>() > 0f) {
+            if (Time.time >= _nextShoot) {
+                Shoot(owner);
+
+                _nextShoot = Time.time + 1f / WeaponInfo.FireRate;
+            }
         }
     }
 

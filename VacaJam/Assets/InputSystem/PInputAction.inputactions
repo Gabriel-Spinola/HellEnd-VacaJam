@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "ShootHold",
+                    "type": "Button",
+                    "id": "3ca2a627-0d72-48e2-8b12-837e62e52358",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
@@ -124,6 +132,17 @@
                     "processors": "",
                     "groups": "Mouse/Keyboard",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5575f64f-ed1c-4717-9cab-103b3aa07f47",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Mouse/Keyboard",
+                    "action": "ShootHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

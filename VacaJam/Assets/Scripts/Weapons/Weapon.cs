@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Utils;
 
 public abstract class Weapon : MonoBehaviour
@@ -8,6 +9,7 @@ public abstract class Weapon : MonoBehaviour
     [Header("Weapon References")]
     [SerializeField] protected Transform ShootTransform;
     [SerializeField] protected WeaponInfo WeaponInfo;
+    [SerializeField] protected ParticleSystem ShootParticle;
 
     [SerializeField] protected Optional<float> BulletSpeed;
     [SerializeField] protected Optional<float> Recoil;
@@ -31,7 +33,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected abstract void Shoot(OptionalNonSerializable<GameObject> owner);
 
-    public abstract void UseWeapon(bool keyShoot, OptionalNonSerializable<GameObject> owner);
+    public abstract void UseWeapon(PInputAction.PlayerActions inputAction, OptionalNonSerializable<GameObject> owner);
     public abstract void UseWeapon(OptionalNonSerializable<GameObject> owner);
 
     protected abstract IEnumerator Reload(float time);
