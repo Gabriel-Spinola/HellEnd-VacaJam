@@ -53,8 +53,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         AudioManager._I.PlaySound2D("Enemy-Hit");
 
-        PlayerManager.PlayerKills++;
-
         if (FindObjectOfType<EnemySpawner>() != null)
             FindObjectOfType<EnemySpawner>().EnemiesInRoom--;
     }

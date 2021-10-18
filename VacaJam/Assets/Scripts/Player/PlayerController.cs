@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     [SerializeField] private InputManager _input;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private PlayerGraphics _playerGraphics;
+    [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private ParticleSystem _deathParticles;
 
     [Header("Stats")]
-    [SerializeField] private float _health;
+    public float Health;
 
     [Header("Config")]
     [Range(0.1f, 10f)]
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     [Header("Debug")]
     [SerializeField] private bool _shouldDie;
 
+    [HideInInspector] public float CurrentHealth;
+
     [HideInInspector] public bool IsEnabled = true;
 
     public Rigidbody2D Rigidbody => _rigidbody;
@@ -49,7 +52,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
     private Vector3 _spawnPosition;
 
-    private float _currentHealth;
     private float _jumpBufferCount;
     private float _lookAngle;
 
@@ -71,7 +73,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     {
         _spawnPosition = transform.position;
 
-        _currentHealth = _health;
+        CurrentHealth = Health;
     }
 
     private void Update()
@@ -193,8 +195,9 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         _rigidbody.bodyType = RigidbodyType2D.Dynamic;
         _collider.enabled = true;
         _playerGraphics.SpriteRenderer.enabled = true;
-        _currentHealth = _health;
+        CurrentHealth = Health;
         _weapon.gameObject.SetActive(true);
+        _playerManager.SetHealth(CurrentHealth);
     }
 
     public IEnumerator DisableMovement(float time)
@@ -223,12 +226,13 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
+        CurrentHealth -= damage;
 
         StartCoroutine(_playerGraphics.Blink());
         CinemachineShake.ShakeCamera(3.5f, .1f);
+        _playerManager.SetHealth(CurrentHealth);
 
-        if (_currentHealth <= 0) {
+        if (CurrentHealth <= 0) {
             _playerGraphics.SetTrigger("Death");
             IsEnabled = false;
             _rigidbody.bodyType = RigidbodyType2D.Static;
