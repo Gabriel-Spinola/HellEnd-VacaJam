@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 671321573745582165}
   - component: {fileID: 671321573745582505}
-  - component: {fileID: 671321573745582166}
   - component: {fileID: 671321573745582167}
   - component: {fileID: 631359756}
   - component: {fileID: 671321573745582504}
+  - component: {fileID: 61003282}
+  - component: {fileID: 5814911824389695172}
   m_Layer: 6
   m_Name: Sniper
   m_TagString: Enemy
@@ -76,7 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 153201741
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 447d4bf4385096d4888c9e31698dd561, type: 3}
+  m_Sprite: {fileID: 2905142066006594429, guid: ee53408c293e093438b5f1197a6b4125,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,32 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &671321573745582166
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671321573745582162}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &671321573745582167
 Rigidbody2D:
   serializedVersion: 4
@@ -163,7 +139,7 @@ MonoBehaviour:
   _moveSpeed: 10
   _acceleration: 10
   _deacceleration: 6
-  _maxDistanceFromPlayer: 0
+  _maxDistanceFromPlayer: 6
   _attackRadius: 8
 --- !u!114 &671321573745582504
 MonoBehaviour:
@@ -193,6 +169,41 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!95 &61003282
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671321573745582162}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d14c7f35c5e13a34097f04a79e420a5c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &5814911824389695172
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671321573745582162}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0017297268, y: -0.053619623}
+  serializedVersion: 2
+  m_Radius: 0.3930695
 --- !u!1001 &2364608587915208001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -200,6 +211,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 671321573745582165}
     m_Modifications:
+    - target: {fileID: 3987307816940365662, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.072
+      objectReference: {fileID: 0}
     - target: {fileID: 3987307816940365663, guid: 44cacd9c07979bb429384b31547a0b34,
         type: 3}
       propertyPath: m_Layer
@@ -286,12 +302,18 @@ PrefabInstance:
       propertyPath: Recoil._enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5319953849020322624, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.072
+      objectReference: {fileID: 0}
     - target: {fileID: 5319953849020322687, guid: 44cacd9c07979bb429384b31547a0b34,
         type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5319953848442698640, guid: 44cacd9c07979bb429384b31547a0b34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 44cacd9c07979bb429384b31547a0b34, type: 3}
 --- !u!4 &7567317504232529615 stripped
 Transform:

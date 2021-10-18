@@ -441,10 +441,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 631359756, guid: 75121620c3ba5b64e940c1d70d6c63d8, type: 3}
-      propertyPath: _maxDistanceFromPlayer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 671321573745582162, guid: 75121620c3ba5b64e940c1d70d6c63d8,
         type: 3}
       propertyPath: m_Name
@@ -504,6 +500,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814911824389695172, guid: 75121620c3ba5b64e940c1d70d6c63d8,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.45556974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814911824389695172, guid: 75121620c3ba5b64e940c1d70d6c63d8,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.058827877
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75121620c3ba5b64e940c1d70d6c63d8, type: 3}
