@@ -68,4 +68,19 @@ public class Flier : Enemy
             Rigidbody.velocity = new Vector2(dir.x * 20f, dir.y * 20f);
         }
     }
+    
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player")) {
+            other.GetComponent<IDamageable>()?.TakeDamage(_damage);
+
+            Rigidbody.velocity = new Vector2(-_targetDir.x * 20f, -_targetDir.y * 20f);
+        } 
+        
+        if (other.CompareTag("Enemy")) {
+            Vector2 dir = transform.position - other.transform.position;
+
+            Rigidbody.velocity = new Vector2(dir.x * 20f, dir.y * 20f);
+        }
+    }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 671321573745582505}
   - component: {fileID: 671321573745582166}
   - component: {fileID: 671321573745582167}
-  - component: {fileID: 671321573745582164}
+  - component: {fileID: 631359756}
   - component: {fileID: 671321573745582504}
   m_Layer: 6
   m_Name: Sniper
@@ -128,13 +128,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &671321573745582164
+  m_Constraints: 4
+--- !u!114 &631359756
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 671321573745582162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae95f89db348bc1459b1828f3b6b843b, type: 3}
+  m_Script: {fileID: 11500000, guid: 358fde80e3ad5294bb7a03872e581ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsDebugEnable: 1
@@ -151,6 +151,8 @@ MonoBehaviour:
   WhatIsTarget:
     serializedVersion: 2
     m_Bits: 8
+  _spriteRenderer: {fileID: 671321573745582505}
+  _hitMaterial: {fileID: 2100000, guid: 51ddea52896324040bb4d9a040bcccd1, type: 2}
   Health: 100
   NextWaypointDistance: 3
   _refreshPathRate: 0.5
@@ -160,8 +162,9 @@ MonoBehaviour:
     m_Bits: 256
   _moveSpeed: 10
   _acceleration: 10
-  _deacceleration: 15
-  _attackRadius: 3
+  _deacceleration: 6
+  _maxDistanceFromPlayer: 0
+  _attackRadius: 8
 --- !u!114 &671321573745582504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +268,22 @@ PrefabInstance:
     - target: {fileID: 5319953848442698638, guid: 44cacd9c07979bb429384b31547a0b34,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319953848442698639, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: WeaponInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b8d99f6b84d5ed41a3b63e3b91c611d,
+        type: 2}
+    - target: {fileID: 5319953848442698639, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: Recoil._value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5319953848442698639, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: Recoil._enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5319953849020322687, guid: 44cacd9c07979bb429384b31547a0b34,

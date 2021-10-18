@@ -45,6 +45,7 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         if (_waveCount > _waves.Length - 1) {
+            AudioManager._I.PlaySound2D("Portal-Break");
             Destroy(this.gameObject);
 
             return;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
-public class Carlin : PathFinderEnemy, IShooteable
+public class Sniper : PathFinderEnemy, IShooteable
 {
     [SerializeField] private Weapon _weapon;
 
@@ -12,6 +12,7 @@ public class Carlin : PathFinderEnemy, IShooteable
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _acceleration;
     [SerializeField] private float _deacceleration;
+    [SerializeField] private float _maxDistanceFromPlayer;
 
     [Range(.1f, 10f)]
     [SerializeField] private float _attackRadius;
@@ -37,25 +38,25 @@ public class Carlin : PathFinderEnemy, IShooteable
 
         transform.localScale = new Vector2(_targetDir.x < 0 ? 1 : -1, transform.localScale.y);
 
-        if (!Physics2D.Linecast(transform.position, TargetTransform.position, _whatIsBlock) && _targetObject.IsEnabled) {
-            Attack();
-        }
+        Attack();
     }
 
     private void FixedUpdate()
     {
-        if (!Physics2D.OverlapCircle(transform.position, _attackRadius, WhatIsTarget.value) && _canMove && _targetObject.IsEnabled) {
+        if (!Physics2D.OverlapCircle(transform.position, _attackRadius, WhatIsTarget) && _canMove && _targetObject.IsEnabled) {
             Chase();
+            Debug.Log("Not moving");
         }
         else if (_canMove) {
-            /*
-            _targetDir = TargetTransform.position - transform.position;
-            _targetDir.Normalize();
+            if (Vector2.Distance(transform.position, TargetTransform.position) >= _maxDistanceFromPlayer) {
+                Rigidbody.velocity = Vector2.Lerp(Rigidbody.velocity, Vector2.zero, _deacceleration * Time.fixedDeltaTime);
+            }
+            else {
+                _targetDir = TargetTransform.position - transform.position;
+                _targetDir.Normalize();
 
-            Rigidbody.velocity = Vector2.Lerp(Rigidbody.velocity, -_targerDir * _moveSpeed, _deacceleration * Time.fixedDeltaTime);
-            */
-
-            Rigidbody.velocity = Vector2.Lerp(Rigidbody.velocity, new Vector2(0f, 0f), _deacceleration * Time.fixedDeltaTime);
+                Rigidbody.velocity = Vector2.Lerp(Rigidbody.velocity, -_targetDir * _moveSpeed, _deacceleration * Time.fixedDeltaTime);
+            }
         }
     }
 
