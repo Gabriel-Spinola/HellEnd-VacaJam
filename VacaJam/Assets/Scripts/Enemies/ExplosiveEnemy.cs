@@ -47,7 +47,7 @@ public class ExplosiveEnemy : Enemy
         _line.positionCount = _segmentCount + 1;
         _line.useWorldSpace = false;*/
 
-        CreateCircle();
+        //CreateCircle();
     }
 
     private void Update()

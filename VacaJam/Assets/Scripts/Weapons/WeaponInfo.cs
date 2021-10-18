@@ -10,6 +10,5 @@ public class WeaponInfo : ScriptableObject
     public GameObject BulletPrefab;
 
     public int Ammo;
-    public float Damage;
     public float FireRate;
 }

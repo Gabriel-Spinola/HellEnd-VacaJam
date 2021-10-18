@@ -11,6 +11,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Vector2 _maxSpawnOffset;
     [SerializeField] private Vector2 _minSpawnOffset;
 
+    [SerializeField] private GameObject _nextLevelPortal;
+    [SerializeField] private Transform _nextLevelPosition;
+
     [SerializeField] private Mode _mode;
 
     [HideInInspector] public int EnemiesInRoom = 0;
@@ -45,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         if (_waveCount > _waves.Length - 1) {
+            Instantiate(_nextLevelPortal, _nextLevelPosition.position, Quaternion.identity);
             Destroy(this.gameObject);
 
             return;

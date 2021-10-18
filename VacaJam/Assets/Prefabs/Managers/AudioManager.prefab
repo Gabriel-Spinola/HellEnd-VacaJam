@@ -60,9 +60,9 @@ MonoBehaviour:
   sceneThemes:
   - name: Menu
     theme: {fileID: 8300000, guid: 9e584387d1d88f64299c0c8890decba9, type: 3}
-    fadeDuration: 2
+    fadeDuration: 0.2
     pitch: 1
-  - name: SampleScene
+  - name: Level 1
     theme: {fileID: 8300000, guid: 471ba4728902476459304b2fa338479a, type: 3}
     fadeDuration: 2
     pitch: 1

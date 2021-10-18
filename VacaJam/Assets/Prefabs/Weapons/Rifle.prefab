@@ -107,6 +107,7 @@ MonoBehaviour:
   Recoil:
     _enabled: 1
     _value: 1
+  Damage: 10
   Spread: 2
   LookAngle: 0
 --- !u!1 &791000246165652200

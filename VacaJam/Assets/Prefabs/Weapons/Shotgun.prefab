@@ -4999,6 +4999,7 @@ MonoBehaviour:
   Recoil:
     _enabled: 1
     _value: 4
+  Damage: 10
   Spread: 30
   LookAngle: 0
   _pelleteCount: 5

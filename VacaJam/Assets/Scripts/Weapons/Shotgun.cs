@@ -39,7 +39,7 @@ public class Shotgun : Weapon
                 ).GetComponent<Projectile>();
 
             projectile.transform.rotation = Quaternion.RotateTowards(projectile.transform.rotation, _pelleteRotations[i], Spread);
-            projectile.Damage = WeaponInfo.Damage;
+            projectile.Damage = Damage;
             projectile.Owner = owner;
 
             if (BulletSpeed.Enabled) {

@@ -23,7 +23,7 @@ public class Rifle : Weapon
                 rotation: Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, LookAngle + Random.Range(-Spread, Spread))
             ).GetComponent<Projectile>();
 
-        projectile.Damage = WeaponInfo.Damage;
+        projectile.Damage = Damage;
         projectile.Owner = owner;
 
         if (BulletSpeed.Enabled) {
