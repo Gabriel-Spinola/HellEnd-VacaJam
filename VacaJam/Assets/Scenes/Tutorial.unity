@@ -10830,7 +10830,7 @@ MonoBehaviour:
   Health: 400
   _maxWeaponRotationDistance: 1
   _jumpForce: 12
-  _moveSpeed: 10
+  _moveSpeed: 11
   _friction: 11
   _fallMultiplier: 4
   _lowJumpMultiplier: 5

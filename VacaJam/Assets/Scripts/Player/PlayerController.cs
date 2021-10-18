@@ -254,7 +254,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         }
 #endif
 
-        PlayerManager.PlayerPoints -= 40;
+        PlayerManager.PlayerPoints -= 5;
         _deathParticles.Play();
         _playerGraphics.SpriteRenderer.enabled = false;
         StartCoroutine(ResetPlayer(.6f));
