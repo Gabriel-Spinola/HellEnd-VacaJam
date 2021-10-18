@@ -70,6 +70,14 @@ MonoBehaviour:
     theme: {fileID: 8300000, guid: 471ba4728902476459304b2fa338479a, type: 3}
     fadeDuration: 2
     pitch: 1
+  - name: Level 2
+    theme: {fileID: 8300000, guid: 471ba4728902476459304b2fa338479a, type: 3}
+    fadeDuration: 2
+    pitch: 1
+  - name: Level 3
+    theme: {fileID: 8300000, guid: cb1be06a1f5b3414cb346ee8e1e277da, type: 3}
+    fadeDuration: 2
+    pitch: 1
 --- !u!114 &3240425907172566812
 MonoBehaviour:
   m_ObjectHideFlags: 0
