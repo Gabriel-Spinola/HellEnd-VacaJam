@@ -9,6 +9,6 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        FindObjectOfType<TMP_Text>().SetText($"{ PlayerKills }");
+        //FindObjectOfType<TMP_Text>().SetText($"{ PlayerKills }");
     }
 }
