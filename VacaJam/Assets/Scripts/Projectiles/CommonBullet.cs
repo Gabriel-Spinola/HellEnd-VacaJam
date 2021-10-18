@@ -26,6 +26,9 @@ public class CommonBullet : Projectile
         if (other.gameObject.name.Contains(gameObject.name) || other.CompareTag("CameraCollider"))
             return;
 
+        if (other.gameObject.CompareTag("Projectile"))
+            return;
+
         // $ Optimize it later
         if (Owner.Enabled) {
             if (other.gameObject == null || Owner.Value == null)

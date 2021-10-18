@@ -16,9 +16,11 @@ public class Carlin : PathFinderEnemy, IShooteable
     [Range(.1f, 10f)]
     [SerializeField] private float _attackRadius;
 
-    private Vector3 _targetDir;
+    private SpriteRenderer _spriteRenderer;
     private PlayerController _targetObject;
 
+    private Vector3 _targetDir;
+    
     private float _lookAngle;
 
     private bool _canMove = true;
@@ -27,6 +29,7 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         base.Awake();
 
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _targetObject = FindObjectOfType<PlayerController>();
         TargetTransform = _targetObject.transform;
     }
@@ -35,7 +38,7 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         _lookAngle = LookDir.GetDir(transform.position, TargetTransform.position);
 
-        transform.localScale = new Vector2(_targetDir.x < 0 ? 1 : -1, transform.localScale.y);
+        _spriteRenderer.flipX = _targetDir.x < 0 ? false : true;
 
         if (!Physics2D.Linecast(transform.position, TargetTransform.position, _whatIsBlock) && _targetObject.IsEnabled) {
             Attack();
@@ -103,6 +106,7 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         CurrentHealth -= damage;
 
+        AudioManager._I.PlaySound2D("Enemy-Hit", 1.4f, 120);
         StartCoroutine(Blink());
 
         if (CurrentHealth <= 0f) {

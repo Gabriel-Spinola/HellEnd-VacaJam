@@ -51,7 +51,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
-        AudioManager._I.PlaySound2D("Enemy-Hit");
+        AudioManager._I.PlaySound2D("Enemy-Hit", 1f, 121);
         PlayerManager.PlayerPoints++;
 
         if (FindObjectOfType<EnemySpawner>() != null)

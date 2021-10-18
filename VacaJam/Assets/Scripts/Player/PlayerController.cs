@@ -231,6 +231,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         StartCoroutine(_playerGraphics.Blink());
         CinemachineShake.ShakeCamera(3.5f, .1f);
         _playerManager.SetHealth(CurrentHealth);
+        AudioManager._I.PlaySound2D("Player-Hit", 1.2f, 129);
 
         if (CurrentHealth <= 0) {
             _playerGraphics.SetTrigger("Death");

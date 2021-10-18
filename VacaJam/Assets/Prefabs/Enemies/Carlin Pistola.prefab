@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 671321573745582504}
   - component: {fileID: 6960429425179200760}
   m_Layer: 6
-  m_Name: Carlin 1
+  m_Name: Carlin Pistola
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   _whatIsBlock:
     serializedVersion: 2
     m_Bits: 256
-  _moveSpeed: 10
+  _moveSpeed: 8
   _acceleration: 10
   _deacceleration: 15
   _attackRadius: 3
@@ -280,6 +280,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5319953848442698639, guid: 44cacd9c07979bb429384b31547a0b34,
+        type: 3}
+      propertyPath: WeaponInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: bc4cd98da40478a4989cfdffa562cde7,
+        type: 2}
     - target: {fileID: 5319953849020322687, guid: 44cacd9c07979bb429384b31547a0b34,
         type: 3}
       propertyPath: m_Layer

@@ -121,6 +121,7 @@ public class ExplosiveEnemy : Enemy
     {
         CurrentHealth -= damage;
 
+        AudioManager._I.PlaySound2D("Enemy-Hit", 1.4f, 120);
         StartCoroutine(Blink());
 
         if (CurrentHealth <= 0f) {

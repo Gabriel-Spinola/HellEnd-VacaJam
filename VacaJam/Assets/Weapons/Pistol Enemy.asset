@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17a89969e45608c428e92ebfcee98db3, type: 3}
-  m_Name: Pistol
+  m_Name: Pistol Enemy
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 8082318825415896153, guid: 0ba2aa3a319ce734791ed0b1dffd8e47,
+  BulletPrefab: {fileID: 8082318825415896153, guid: 129f8e8bc7d6faf44a98e8002109d928,
     type: 3}
   Ammo: 10
   FireRate: 2

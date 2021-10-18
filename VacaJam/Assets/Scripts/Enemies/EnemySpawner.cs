@@ -47,12 +47,15 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (_waveCount > _waves.Length - 1) {
+        if (_waveCount > _waves.Length - 1 && FindObjectsOfType<Enemy>().Length <= 0) {
             Instantiate(_nextLevelPortal, _nextLevelPosition.position, Quaternion.identity);
             Destroy(this.gameObject);
 
             return;
         }
+
+        if (_waveCount > _waves.Length - 1)
+            return;
 
         switch (_mode) {
             case Mode.KeepSpawning:
