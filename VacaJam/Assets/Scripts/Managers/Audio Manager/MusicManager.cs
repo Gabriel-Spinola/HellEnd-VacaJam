@@ -22,6 +22,8 @@ public class MusicManager : MonoBehaviour
 			if (newSceneName != sceneName) {
 				sceneName = newSceneName;
 
+				Debug.Log("Restarted Here");
+
 				Invoke(nameof(PlayMusic), .2f);
 			}
 			else {
@@ -30,16 +32,18 @@ public class MusicManager : MonoBehaviour
 		});
 	}
 
-    private void Start()
+    private void Update()
     {
-		InvokeRepeating(nameof(Restart), 0f, clipHolder.length);
-	}
+        
+    }
 
     void PlayMusic()
 	{
 		AudioClip clipToPlay = null;
 		float fadeDuration = 0f;
 		float pitch = 0f;
+
+		Debug.Log("Play Music ");
 
 		for (int i = 0; i < sceneThemes.Length; i++) {
 			if (sceneName == sceneThemes[i].name) {
@@ -53,7 +57,9 @@ public class MusicManager : MonoBehaviour
 			clipHolder = clipToPlay;
 			fadeHolder = fadeDuration;
 			pitchHolder = pitch;
-			restart = true;
+			restart = false;
+
+			Debug.Log($"Length { clipHolder.length }");
 
 			AudioManager._I.PlayMusic(clipToPlay, fadeDuration, pitch);
 			

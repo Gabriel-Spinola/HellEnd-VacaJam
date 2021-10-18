@@ -61,13 +61,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(MasterVolumePercent);
-        Debug.Log(MusicVolumePercent);
-        Debug.Log(SFXVolumePercent);
-    }
-
     public void SetVolume(float volumePercent, AudioChannel channel)
     {
         switch (channel) {
