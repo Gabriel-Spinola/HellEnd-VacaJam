@@ -886,7 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _masterVolumeSlider: {fileID: 1800980436}
-  _SFXVolumeSlider: {fileID: 0}
+  _SFXVolumeSlider: {fileID: 613736265}
   _musicVolumeSlider: {fileID: 719548455}
 --- !u!1 &274103728
 GameObject:
