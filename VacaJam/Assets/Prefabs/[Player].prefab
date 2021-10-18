@@ -14763,8 +14763,9 @@ MonoBehaviour:
   _input: {fileID: 0}
   _weapon: {fileID: 6714108479575906023}
   _playerGraphics: {fileID: 7031532017864490521}
+  _playerManager: {fileID: 0}
   _deathParticles: {fileID: 1259507948750512467}
-  _health: 10
+  Health: 400
   _maxWeaponRotationDistance: 1
   _jumpForce: 12
   _moveSpeed: 10
@@ -14775,6 +14776,7 @@ MonoBehaviour:
   _hangTime: 9
   _attackLine: 0.96
   _shouldDie: 1
+  CurrentHealth: 0
   IsEnabled: 1
 --- !u!114 &9115715020945080386
 MonoBehaviour:
@@ -14935,6 +14937,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9115715020945080390}
     m_Modifications:
+    - target: {fileID: 1147437535005863253, guid: 06715128fb9a95e4082e136771cc5067,
+        type: 3}
+      propertyPath: Damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5839367355732339704, guid: 06715128fb9a95e4082e136771cc5067,
         type: 3}
       propertyPath: m_RootOrder

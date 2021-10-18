@@ -7,10 +7,12 @@ public class Shotgun : Weapon
 {
     [SerializeField] private int _pelleteCount;
 
+    private SpriteRenderer _spriteRenderer;
     private List<Quaternion> _pelleteRotations;
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _pelleteRotations = new List<Quaternion>(_pelleteCount);
 
         for (int i = 0; i < _pelleteCount; i++) {
@@ -20,6 +22,7 @@ public class Shotgun : Weapon
 
     private void Update()
     {
+        _spriteRenderer.flipY = LookAngle < 90 && LookAngle > -90 ? false : true;
         transform.rotation = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, LookAngle);
     }
 

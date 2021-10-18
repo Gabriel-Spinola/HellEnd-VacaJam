@@ -6,8 +6,16 @@ using Utils;
 
 public class Rifle : Weapon
 {
+    private SpriteRenderer _spriteRenderer;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     private void Update()
     {
+        _spriteRenderer.flipY = LookAngle < 90 && LookAngle > -90 ? false : true;
         transform.rotation = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, LookAngle);
     }
 
