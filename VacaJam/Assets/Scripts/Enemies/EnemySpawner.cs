@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _nextWaveCooldown;
     [SerializeField] private Vector2 _maxSpawnOffset;
     [SerializeField] private Vector2 _minSpawnOffset;
+    [SerializeField] private float _delayToStart;
 
     [SerializeField] private GameObject _nextLevelPortal;
     [SerializeField] private Transform _nextLevelPosition;
@@ -17,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Mode _mode;
 
     [HideInInspector] public int EnemiesInRoom = 0;
+
+    private bool _start;
 
     private enum Mode
     {
@@ -45,8 +48,16 @@ public class EnemySpawner : MonoBehaviour
         public int EnemiesAmount => _enemiesAmount;
     }
 
+    private void Start()
+    {
+        StartCoroutine(DelayStart());
+    }
+
     private void Update()
     {
+        if (!_start)
+            return;
+
         if (_waveCount > _waves.Length - 1 && FindObjectsOfType<Enemy>().Length <= 0) {
             Instantiate(_nextLevelPortal, _nextLevelPosition.position, Quaternion.identity);
             Destroy(this.gameObject);
@@ -145,5 +156,14 @@ public class EnemySpawner : MonoBehaviour
 
         _waveCount++;
         _enemiesSpawned = 0;
+    }
+
+    private IEnumerator DelayStart()
+    {
+        _start = false;
+
+        yield return new WaitForSeconds(_delayToStart);
+
+        _start = true;
     }
 }
