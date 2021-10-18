@@ -15,7 +15,8 @@ public class Pistol : Weapon
 
     private void Update()
     {
-        _spriteRenderer.flipY = LookAngle < 90 && LookAngle > -90 ? false : true;
+        if (_spriteRenderer != null)
+            _spriteRenderer.flipY = LookAngle < 90 && LookAngle > -90 ? false : true;
         transform.rotation = Quaternion.Euler(Quaternion.identity.x, Quaternion.identity.y, LookAngle);
     }
 

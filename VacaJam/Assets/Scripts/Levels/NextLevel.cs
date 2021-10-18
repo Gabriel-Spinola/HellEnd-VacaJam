@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
+    [SerializeField] private bool _isActive = false;
+
     private Collider2D _collider;
     private Animator _animator;
 
@@ -12,7 +14,9 @@ public class NextLevel : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
-        _collider.enabled = false;
+
+        if (!_isActive)
+            _collider.enabled = false;
     }
 
     public void StartPortal()

@@ -62,6 +62,10 @@ MonoBehaviour:
     theme: {fileID: 8300000, guid: 9e584387d1d88f64299c0c8890decba9, type: 3}
     fadeDuration: 0.2
     pitch: 1
+  - name: Tutorial
+    theme: {fileID: 8300000, guid: c8461b96890b05a4ea533bcbab91a807, type: 3}
+    fadeDuration: 0.2
+    pitch: 1
   - name: Level 1
     theme: {fileID: 8300000, guid: 471ba4728902476459304b2fa338479a, type: 3}
     fadeDuration: 2
