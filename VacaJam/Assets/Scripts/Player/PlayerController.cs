@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
     private void Update()
     {
-        if (!IsEnabled)
+        if (!IsEnabled || PauseMenu.isGamePaused)
             return;
 
         BetterJump();
@@ -226,6 +226,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         _currentHealth -= damage;
 
         StartCoroutine(_playerGraphics.Blink());
+        CinemachineShake.ShakeCamera(3.5f, .1f);
 
         if (_currentHealth <= 0) {
             _playerGraphics.SetTrigger("Death");

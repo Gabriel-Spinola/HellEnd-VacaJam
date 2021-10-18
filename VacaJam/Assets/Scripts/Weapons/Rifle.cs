@@ -15,6 +15,7 @@ public class Rifle : Weapon
     {
         ShootParticle.Play();
         AudioManager._I.PlaySound2D("Rifle-Shoot");
+        CinemachineShake.ShakeCamera(1.2f, .1f);
 
         Projectile projectile = Instantiate(
                 original: WeaponInfo.BulletPrefab,

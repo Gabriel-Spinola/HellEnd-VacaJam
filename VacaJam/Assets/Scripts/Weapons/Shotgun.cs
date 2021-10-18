@@ -27,6 +27,7 @@ public class Shotgun : Weapon
     {
         ShootParticle.Play();
         AudioManager._I.PlaySound2D("Shotgun-Shoot");
+        CinemachineShake.ShakeCamera(1.4f, .1f);
 
         for (int i = 0; i < _pelleteCount; i++) {
             _pelleteRotations[i] = Random.rotation;

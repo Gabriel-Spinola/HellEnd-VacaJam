@@ -30,6 +30,9 @@ public class PlayerGraphics : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.isGamePaused)
+            return;
+
         Animator.SetFloat("Horizontal", Mathf.Abs(_playerController.Input.MovementVec.x));
         _scaleAnimator.SetFloat("yVel", _playerController.Rigidbody.velocity.y);
     }
