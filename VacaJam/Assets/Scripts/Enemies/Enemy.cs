@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     [Header("Enemy References")]
     [SerializeField] protected LayerMask WhatIsTarget;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] protected SpriteRenderer SpriteRenderer;
     [SerializeField] private Material _hitMaterial;
 
     [Header("Enemy Stats")]
@@ -35,16 +35,16 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     {
         CurrentHealth = Health;
 
-        _defaultMaterial = _spriteRenderer.material;
+        _defaultMaterial = SpriteRenderer.material;
     }
 
     protected IEnumerator Blink()
     {
-        _spriteRenderer.material = _hitMaterial;
+        SpriteRenderer.material = _hitMaterial;
 
         yield return new WaitForSeconds(.1f);
 
-        _spriteRenderer.material = _defaultMaterial;
+        SpriteRenderer.material = _defaultMaterial;
     }
 
     public abstract void TakeDamage(float damage);

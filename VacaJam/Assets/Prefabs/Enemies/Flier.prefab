@@ -142,7 +142,7 @@ MonoBehaviour:
   WhatIsTarget:
     serializedVersion: 2
     m_Bits: 8
-  _spriteRenderer: {fileID: 671321573745582505}
+  SpriteRenderer: {fileID: 671321573745582505}
   _hitMaterial: {fileID: 2100000, guid: 51ddea52896324040bb4d9a040bcccd1, type: 2}
   Health: 100
   _moveSpeed: 7

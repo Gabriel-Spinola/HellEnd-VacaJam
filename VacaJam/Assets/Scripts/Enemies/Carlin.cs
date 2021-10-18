@@ -16,7 +16,6 @@ public class Carlin : PathFinderEnemy, IShooteable
     [Range(.1f, 10f)]
     [SerializeField] private float _attackRadius;
 
-    private SpriteRenderer _spriteRenderer;
     private PlayerController _targetObject;
 
     private Vector3 _targetDir;
@@ -29,7 +28,7 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         base.Awake();
 
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
         _targetObject = FindObjectOfType<PlayerController>();
         TargetTransform = _targetObject.transform;
     }
@@ -38,7 +37,7 @@ public class Carlin : PathFinderEnemy, IShooteable
     {
         _lookAngle = LookDir.GetDir(transform.position, TargetTransform.position);
 
-        _spriteRenderer.flipX = _targetDir.x < 0 ? false : true;
+        SpriteRenderer.flipX = _targetDir.x < 0 ? false : true;
 
         if (!Physics2D.Linecast(transform.position, TargetTransform.position, _whatIsBlock) && _targetObject.IsEnabled) {
             Attack();

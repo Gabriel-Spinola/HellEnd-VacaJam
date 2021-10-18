@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
     [SerializeField] private InputManager _input;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private PlayerGraphics _playerGraphics;
-    [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private ParticleSystem _deathParticles;
 
     [Header("Stats")]
@@ -197,7 +196,7 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         _playerGraphics.SpriteRenderer.enabled = true;
         CurrentHealth = Health;
         _weapon.gameObject.SetActive(true);
-        _playerManager.SetHealth(CurrentHealth);
+        PlayerManager.I.ResetHearts();
     }
 
     public IEnumerator DisableMovement(float time)
@@ -230,7 +229,6 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
         StartCoroutine(_playerGraphics.Blink());
         CinemachineShake.ShakeCamera(3.5f, .1f);
-        _playerManager.SetHealth(CurrentHealth);
         AudioManager._I.PlaySound2D("Player-Hit", 1.2f, 129);
 
         if (CurrentHealth <= 0) {
