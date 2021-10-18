@@ -4087,6 +4087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1771181262}
+  settingsMenu: {fileID: 794104787}
 --- !u!114 &1146958712
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class MusicManager : MonoBehaviour
 	[SerializeField] private SceneTheme[] sceneThemes;
 
 	private string sceneName;
-	private AudioClip clipHolder = null;
+	[SerializeField] private AudioClip clipHolder;
 	float fadeHolder = 0f;
 	float pitchHolder = 0f;
 	private bool restart = false;
@@ -15,7 +15,7 @@ public class MusicManager : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 
-		// Shows a Unity warning, but doesn't cause any error.
+		// Shows a Unity warning, but doesn't cause any real error.
 		SceneManager.sceneLoaded += ((Scene scene, LoadSceneMode mode) => {
 			string newSceneName = scene.name;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
 public class PlayerGraphics : MonoBehaviour
@@ -33,11 +34,17 @@ public class PlayerGraphics : MonoBehaviour
         if (PauseMenu.isGamePaused)
             return;
 
-        Animator.SetFloat("Horizontal", Mathf.Abs(_playerController.Input.MovementVec.x));
-        _scaleAnimator.SetFloat("yVel", _playerController.Rigidbody.velocity.y);
+        if (SceneManager.GetActiveScene().name == "Menu" || SceneManager.GetActiveScene().name == "Credits") {
+            Animator.SetFloat("Horizontal", 0f);
+        }
+        else {
+
+            Animator.SetFloat("Horizontal", Mathf.Abs(_playerController.Input.MovementVec.x));
+            _scaleAnimator.SetFloat("yVel", _playerController.Rigidbody.velocity.y);
+        }
     }
 
-    public void FlipObject()
+        public void FlipObject()
     {
         SpriteRenderer.flipX = Side != 1;
     }
