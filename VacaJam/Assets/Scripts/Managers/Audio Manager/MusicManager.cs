@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MusicManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class MusicManager : MonoBehaviour
 	float fadeHolder = 0f;
 	float pitchHolder = 0f;
 	private bool restart = false;
+	bool playingMusic = false;
 
 	private void Awake()
 	{
@@ -43,8 +46,6 @@ public class MusicManager : MonoBehaviour
 		float fadeDuration = 0f;
 		float pitch = 0f;
 
-		Debug.Log("Play Music ");
-
 		for (int i = 0; i < sceneThemes.Length; i++) {
 			if (sceneName == sceneThemes[i].name) {
 				clipToPlay = sceneThemes[i].theme;
@@ -57,14 +58,14 @@ public class MusicManager : MonoBehaviour
 			clipHolder = clipToPlay;
 			fadeHolder = fadeDuration;
 			pitchHolder = pitch;
-			restart = false;
+			playingMusic = true;
 
 			Debug.Log($"Length { clipHolder.length }");
 
 			AudioManager._I.PlayMusic(clipToPlay, fadeDuration, pitch);
-			
-			Invoke(nameof(PlayMusic), clipToPlay.length);
-		}
+
+			StartCoroutine(RestartMusic(clipToPlay.length, sceneName));
+        }
 	}
 
 	public void Restart()
@@ -77,6 +78,15 @@ public class MusicManager : MonoBehaviour
 			restart = false;
 		}
 	}
+
+	public IEnumerator RestartMusic(float time, string _sceneName)
+    {
+		yield return new WaitForSeconds(time);
+
+		if (_sceneName == sceneName) {
+			Invoke(nameof(PlayMusic), .2f);
+		}
+    }
 
 	[System.Serializable]
 	public class SceneTheme
