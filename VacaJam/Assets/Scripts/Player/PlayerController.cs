@@ -199,6 +199,15 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
         PlayerManager.I.ResetHearts();
     }
 
+    public IEnumerator DisablePlayer(float time)
+    {
+        IsEnabled = false;
+
+        yield return new WaitForSeconds(time);
+
+        IsEnabled = true;
+    }
+
     public IEnumerator DisableMovement(float time)
     {
         _canMove = false;
