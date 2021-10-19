@@ -90,6 +90,10 @@ public class PlayerController : MonoBehaviour, IDamageable, IShooteable
 
         _playerGraphics.FlipObject();
 
+        if (Rigidbody.velocity.y >= 24f) {
+            Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 24f);
+        }
+
         if (_collision.IsGrounded && !_isGroundedPrev) {
             _playerGraphics.SetHeightTrigger("Squash");
             _playerGraphics.PlayerJumpParticle();
