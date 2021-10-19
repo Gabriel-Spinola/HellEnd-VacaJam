@@ -5974,7 +5974,7 @@ MonoBehaviour:
   _nextWaveCooldown: 3
   _maxSpawnOffset: {x: 8, y: 5}
   _minSpawnOffset: {x: -8, y: -5}
-  _delayToStart: 1
+  _delayToStart: 1.5
   _nextLevelPortal: {fileID: 8408223615672732638, guid: 983f2141f1bade64481485a790478ffa,
     type: 3}
   _nextLevelPosition: {fileID: 1842994300}

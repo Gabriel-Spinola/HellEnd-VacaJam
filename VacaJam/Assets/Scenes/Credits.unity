@@ -341,7 +341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Jogar Novemente
+  m_text: Jogar Novamente
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d6aeb9b662dfbb48beb393f126caa8d, type: 2}
   m_sharedMaterial: {fileID: -199636964965234873, guid: 4d6aeb9b662dfbb48beb393f126caa8d,
@@ -13640,7 +13640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -298, y: -233}
+  m_AnchoredPosition: {x: -226, y: -233}
   m_SizeDelta: {x: 408.928, y: 63.995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948447584
@@ -29146,7 +29146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: -388}
+  m_AnchoredPosition: {x: -308, y: -388}
   m_SizeDelta: {x: 160, y: 41.397}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836792007
