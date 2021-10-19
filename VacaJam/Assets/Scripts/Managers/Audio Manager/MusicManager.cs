@@ -6,7 +6,7 @@ public class MusicManager : MonoBehaviour
 	[SerializeField] private SceneTheme[] sceneThemes;
 
 	private string sceneName;
-	private AudioClip clipHolder = null;
+	[SerializeField] private AudioClip clipHolder;
 	float fadeHolder = 0f;
 	float pitchHolder = 0f;
 	private bool restart = false;
@@ -15,12 +15,14 @@ public class MusicManager : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 
-		// Shows a Unity warning, but doesn't cause any error.
+		// Shows a Unity warning, but doesn't cause any real error.
 		SceneManager.sceneLoaded += ((Scene scene, LoadSceneMode mode) => {
 			string newSceneName = scene.name;
 
 			if (newSceneName != sceneName) {
 				sceneName = newSceneName;
+
+				Debug.Log("Restarted Here");
 
 				Invoke(nameof(PlayMusic), .2f);
 			}
@@ -30,16 +32,18 @@ public class MusicManager : MonoBehaviour
 		});
 	}
 
-    private void Start()
+    private void Update()
     {
-		InvokeRepeating(nameof(Restart), 0f, clipHolder.length);
-	}
+        
+    }
 
     void PlayMusic()
 	{
 		AudioClip clipToPlay = null;
 		float fadeDuration = 0f;
 		float pitch = 0f;
+
+		Debug.Log("Play Music ");
 
 		for (int i = 0; i < sceneThemes.Length; i++) {
 			if (sceneName == sceneThemes[i].name) {
@@ -53,7 +57,9 @@ public class MusicManager : MonoBehaviour
 			clipHolder = clipToPlay;
 			fadeHolder = fadeDuration;
 			pitchHolder = pitch;
-			restart = true;
+			restart = false;
+
+			Debug.Log($"Length { clipHolder.length }");
 
 			AudioManager._I.PlayMusic(clipToPlay, fadeDuration, pitch);
 			

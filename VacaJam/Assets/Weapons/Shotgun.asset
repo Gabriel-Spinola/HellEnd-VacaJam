@@ -15,4 +15,4 @@ MonoBehaviour:
   BulletPrefab: {fileID: 8082318825415896153, guid: 0ba2aa3a319ce734791ed0b1dffd8e47,
     type: 3}
   Ammo: 5
-  FireRate: 1
+  FireRate: 2
